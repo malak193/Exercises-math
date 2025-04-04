@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمارين رياضيات تفاعلية</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+    .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+    input { margin: 10px; padding: 5px; }
+    button { padding: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>تمرين رياضيات تفاعلي</h2>
+    <p id="question"></p>
+    <input type="number" id="answer" placeholder="أدخل الإجابة">
+    <button onclick="checkAnswer()">تحقق</button>
+    <p id="result"></p>
+    <button onclick="generateQuestion()">سؤال جديد</button>
+  </div>
+
+  <script>
+    let correctAnswer;
+    function generateQuestion() {
+      let num1 = Math.floor(Math.random() * 10) + 1;
+      let num2 = Math.floor(Math.random() * 10) + 1;
+      correctAnswer = num1 + num2;
+      document.getElementById("question").innerText = `${num1} + ${num2} = ؟`;
+      document.getElementById("result").innerText = "";
+      document.getElementById("answer").value = "";
+    }
+    
+    function checkAnswer() {
+      let userAnswer = parseInt(document.getElementById("answer").value);
+      if (userAnswer === correctAnswer) {
+        document.getElementById("result").innerText = "✅ إجابة صحيحة!";
+      } else {
+        document.getElementById("result").innerText = "❌ إجابة خاطئة. حاول مرة أخرى!";
+      }
+    }
+    
+    generateQuestion();
+  </script>
+</body>
+</html>
